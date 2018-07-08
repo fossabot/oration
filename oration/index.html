@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `oration` crate."><meta name="keywords" content="rust, rustlang, rust-lang, oration"><title>oration - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Crate oration</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'oration', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>oration</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/oration/main.rs.html#1-448' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>Oration: a Rocket/Elm self hosted commenting system for static sites.</p>
+<p>Inspired by <img src="https://posativ.org/isso/" alt="Isso" />, which is a welcomed change from Disqus.
+However, the codebase is unmaintained and <img src="https://axiomatic.neophilus.net/posts/2017-04-16-from-disqus-to-isso.html" alt="security concerns" /> abound.
+Oration aims to be a fast, lightweight and secure platform for your comments. Nothing more, but importantly, nothing less.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
+<table><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/std/index.html" title="mod std">std</a>;</code></td></tr><tr><td><code>extern crate bincode;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/chrono/0.4.0/chrono/index.html" title="mod chrono">chrono</a>;</code></td></tr><tr><td><code>extern crate diesel;</code></td></tr><tr><td><code>extern crate dotenv;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/error-chain/0.12.0/error_chain/index.html" title="mod error_chain">error_chain</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/petgraph/0.4/petgraph/index.html" title="mod petgraph">petgraph</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/r2d2/0.8/r2d2/index.html" title="mod r2d2">r2d2</a>;</code></td></tr><tr><td><code>extern crate r2d2_diesel;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/rand/0.5.3/rand/index.html" title="mod rand">rand</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://api.rocket.rs/rocket/index.html" title="mod rocket">rocket</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://api.rocket.rs/rocket_contrib/index.html" title="mod rocket_contrib">rocket_contrib</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/serde_derive/1.0.70/serde_derive/index.html" title="mod serde_derive">serde_derive</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://sergio.bz/rustdocs/yansi/yansi/index.html" title="mod yansi">yansi</a>;</code></td></tr><tr><td><code>extern crate bloomfilter;</code></td></tr><tr><td><code>extern crate crypto;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/itertools/0.7/itertools/index.html" title="mod itertools">itertools</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/lazy_static/1.0.1/lazy_static/index.html" title="mod lazy_static">lazy_static</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/lettre/0.8.2/lettre/index.html" title="mod lettre">lettre</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/lettre_email/0.8.2/lettre_email/index.html" title="mod lettre_email">lettre_email</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/log/0.4/log/index.html" title="mod log">log</a>;</code></td></tr><tr><td><code>extern crate openssl_probe;</code></td></tr><tr><td><code>extern crate regex;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/reqwest/0.8.6/reqwest/index.html" title="mod reqwest">reqwest</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://docs.rs/serde_yaml/0.7.5/serde_yaml/index.html" title="mod serde_yaml">serde_yaml</a>;</code></td></tr><tr><td><code>use std::prelude::v1::*;</code></td></tr><tr><td><code>use config::<a class="struct" href="../oration/config/struct.Config.html" title="struct oration::config::Config">Config</a>;</code></td></tr><tr><td><code>use crypto::digest::Digest;</code></td></tr><tr><td><code>use crypto::sha2::Sha224;</code></td></tr><tr><td><code>use data::<a class="struct" href="../oration/data/struct.AuthHash.html" title="struct oration::data::AuthHash">AuthHash</a>;</code></td></tr><tr><td><code>use data::<a class="struct" href="../oration/data/struct.FormEdit.html" title="struct oration::data::FormEdit">FormEdit</a>;</code></td></tr><tr><td><code>use data::<a class="struct" href="../oration/data/struct.FormInput.html" title="struct oration::data::FormInput">FormInput</a>;</code></td></tr><tr><td><code>use errors::<a class="struct" href="../oration/errors/struct.Error.html" title="struct oration::errors::Error">Error</a>;</code></td></tr><tr><td><code>use errors::Error;</code></td></tr><tr><td><code>use models::<a class="mod" href="../oration/models/comments/index.html" title="mod oration::models::comments">comments</a>;</code></td></tr><tr><td><code>use models::comments::<a class="struct" href="../oration/models/comments/struct.Comment.html" title="struct oration::models::comments::Comment">Comment</a>;</code></td></tr><tr><td><code>use models::comments::<a class="struct" href="../oration/models/comments/struct.CommentEdits.html" title="struct oration::models::comments::CommentEdits">CommentEdits</a>;</code></td></tr><tr><td><code>use models::comments::<a class="struct" href="../oration/models/comments/struct.InsertedComment.html" title="struct oration::models::comments::InsertedComment">InsertedComment</a>;</code></td></tr><tr><td><code>use models::comments::<a class="struct" href="../oration/models/comments/struct.NestedComment.html" title="struct oration::models::comments::NestedComment">NestedComment</a>;</code></td></tr><tr><td><code>use models::preferences::<a class="struct" href="../oration/models/preferences/struct.Preference.html" title="struct oration::models::preferences::Preference">Preference</a>;</code></td></tr><tr><td><code>use models::<a class="mod" href="../oration/models/threads/index.html" title="mod oration::models::threads">threads</a>;</code></td></tr><tr><td><code>use rocket::http::<a class="struct" href="https://api.rocket.rs/rocket/http/status/struct.Status.html" title="struct rocket::http::status::Status">Status</a>;</code></td></tr><tr><td><code>use rocket::request::<a class="struct" href="https://api.rocket.rs/rocket/request/form/form/struct.Form.html" title="struct rocket::request::form::form::Form">Form</a>;</code></td></tr><tr><td><code>use rocket::response::<a class="mod" href="https://api.rocket.rs/rocket/response/status/index.html" title="mod rocket::response::status">status</a>;</code></td></tr><tr><td><code>use rocket::response::<a class="struct" href="https://api.rocket.rs/rocket/response/failure/struct.Failure.html" title="struct rocket::response::failure::Failure">Failure</a>;</code></td></tr><tr><td><code>use rocket::response::Failure;</code></td></tr><tr><td><code>use rocket::response::<a class="struct" href="https://api.rocket.rs/rocket/response/named_file/struct.NamedFile.html" title="struct rocket::response::named_file::NamedFile">NamedFile</a>;</code></td></tr><tr><td><code>use rocket::<a class="struct" href="https://api.rocket.rs/rocket/request/state/struct.State.html" title="struct rocket::request::state::State">State</a>;</code></td></tr><tr><td><code>use rocket_contrib::<a class="struct" href="https://api.rocket.rs/rocket_contrib/json/struct.Json.html" title="struct rocket_contrib::json::Json">Json</a>;</code></td></tr><tr><td><code>use rocket_contrib::Json;</code></td></tr><tr><td><code>use std::<a class="mod" href="https://doc.rust-lang.org/nightly/std/io/index.html" title="mod std::io">io</a>;</code></td></tr><tr><td><code>use std::net::<a class="enum" href="https://doc.rust-lang.org/nightly/std/net/addr/enum.SocketAddr.html" title="enum std::net::addr::SocketAddr">SocketAddr</a>;</code></td></tr><tr><td><code>use std::<a class="mod" href="https://doc.rust-lang.org/nightly/std/process/index.html" title="mod std::process">process</a>;</code></td></tr><tr><td><code>use yansi::<a class="struct" href="https://sergio.bz/rustdocs/yansi/yansi/paint/struct.Paint.html" title="struct yansi::paint::Paint">Paint</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="config/index.html"
+                                  title='mod oration::config'>config</a></td>
+                           <td class='docblock-short'>
+                                <p>Loads configuration data from disk.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="data/index.html"
+                                  title='mod oration::data'>data</a></td>
+                           <td class='docblock-short'>
+                                <p>Houses Data Structures that are needed in multiple modules.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="db/index.html"
+                                  title='mod oration::db'>db</a></td>
+                           <td class='docblock-short'>
+                                <p>Handles the database connection pool.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="errors/index.html"
+                                  title='mod oration::errors'>errors</a></td>
+                           <td class='docblock-short'>
+                                <p>Handles the error chain of the program.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="models/index.html"
+                                  title='mod oration::models'>models</a></td>
+                           <td class='docblock-short'>
+                                <p>SQL &lt;----&gt; Rust inerop using Diesel.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="notify/index.html"
+                                  title='mod oration::notify'>notify</a></td>
+                           <td class='docblock-short'>
+                                <p>Sends notifications to admin.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="schema/index.html"
+                                  title='mod oration::schema'>schema</a></td>
+                           <td class='docblock-short'>
+                                <p>Verbose schema for the comment database.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="static_files/index.html"
+                                  title='mod oration::static_files'>static_files</a></td>
+                           <td class='docblock-short'>
+                                <p>Serves up static files through Rocket.</p>
+
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CommentId.html"
+                                  title='struct oration::CommentId'>CommentId</a></td>
+                           <td class='docblock-short'>
+                                <p>Used in conjuction with <code>/delete?</code> and <code>/edit?</code>.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Initialise.html"
+                                  title='struct oration::Initialise'>Initialise</a></td>
+                           <td class='docblock-short'>
+                                <p>Information sent to the client upon initialisation.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Post.html"
+                                  title='struct oration::Post'>Post</a></td>
+                           <td class='docblock-short'>
+                                <p>Used in conjuction with <code>/count?</code> and <code>/comments?</code>.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PostComments.html"
+                                  title='struct oration::PostComments'>PostComments</a></td>
+                           <td class='docblock-short'>
+                                <p>Comments to frontend</p>
+
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_Initialise.html"
+                                  title='constant oration::_IMPL_SERIALIZE_FOR_Initialise'>_IMPL_SERIALIZE_FOR_Initialise</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_PostComments.html"
+                                  title='constant oration::_IMPL_SERIALIZE_FOR_PostComments'>_IMPL_SERIALIZE_FOR_PostComments</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_delete_comment.html"
+                                  title='static oration::static_rocket_route_info_for_delete_comment'>static_rocket_route_info_for_delete_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_dislike_comment.html"
+                                  title='static oration::static_rocket_route_info_for_dislike_comment'>static_rocket_route_info_for_dislike_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_edit_comment.html"
+                                  title='static oration::static_rocket_route_info_for_edit_comment'>static_rocket_route_info_for_edit_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_get_comment_count.html"
+                                  title='static oration::static_rocket_route_info_for_get_comment_count'>static_rocket_route_info_for_get_comment_count</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_get_comments.html"
+                                  title='static oration::static_rocket_route_info_for_get_comments'>static_rocket_route_info_for_get_comments</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_get_session.html"
+                                  title='static oration::static_rocket_route_info_for_get_session'>static_rocket_route_info_for_get_session</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_index.html"
+                                  title='static oration::static_rocket_route_info_for_index'>static_rocket_route_info_for_index</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_initialise.html"
+                                  title='static oration::static_rocket_route_info_for_initialise'>static_rocket_route_info_for_initialise</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_like_comment.html"
+                                  title='static oration::static_rocket_route_info_for_like_comment'>static_rocket_route_info_for_like_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.static_rocket_route_info_for_new_comment.html"
+                                  title='static oration::static_rocket_route_info_for_new_comment'>static_rocket_route_info_for_new_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Rocket code generated static route information structure.</p>
+
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.delete_comment.html"
+                                  title='fn oration::delete_comment'>delete_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Requests comment deletion from a user, may or may not actually delete the comment
+based on a number of possibilities: authentication issues, over time, etc.
+Secondarily, the method of deletion may differ. If the comment has children it
+is not deleted entirely, but flagged so that the rest of the conversation is not
+automatically pruned.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.dislike_comment.html"
+                                  title='fn oration::dislike_comment'>dislike_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Dislikes a comment so long as the current user has not done so already.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.edit_comment.html"
+                                  title='fn oration::edit_comment'>edit_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Requests an update to a comment from a user, which may or may not occur
+based on a number of possibilities: authentication issues, over time, etc.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_comment_count.html"
+                                  title='fn oration::get_comment_count'>get_comment_count</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the comment count for a given post from the database.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_comments.html"
+                                  title='fn oration::get_comments'>get_comments</a></td>
+                           <td class='docblock-short'>
+                                <p>Return a json block of comment data for the requested url.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_session.html"
+                                  title='fn oration::get_session'>get_session</a></td>
+                           <td class='docblock-short'>
+                                <p>Test function that returns the session hash from the database.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.index.html"
+                                  title='fn oration::index'>index</a></td>
+                           <td class='docblock-short'>
+                                <p>Serve up the index file. This is only useful for development. Should not be used in a release.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.initialise.html"
+                                  title='fn oration::initialise'>initialise</a></td>
+                           <td class='docblock-short'>
+                                <p>Gets a Sha224 hash from a clients IP along with the blog's author hash.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.like_comment.html"
+                                  title='fn oration::like_comment'>like_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Likes a comment so long as the current user has not done so already.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.main.html"
+                                  title='fn oration::main'>main</a></td>
+                           <td class='docblock-short'>
+                                <p>Application entry point.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.new_comment.html"
+                                  title='fn oration::new_comment'>new_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Process comment input from form.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.print_errors.html"
+                                  title='fn oration::print_errors'>print_errors</a></td>
+                           <td class='docblock-short'>
+                                <p>Prints the current error chain to the log file / stdio.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket.html"
+                                  title='fn oration::rocket'>rocket</a></td>
+                           <td class='docblock-short'>
+                                <p>Ignite Rocket, connect to the database and start serving data.
+Exposes a connection to the database so we can set the session on startup.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_delete_comment.html"
+                                  title='fn oration::rocket_route_fn_delete_comment'>rocket_route_fn_delete_comment</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_dislike_comment.html"
+                                  title='fn oration::rocket_route_fn_dislike_comment'>rocket_route_fn_dislike_comment</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_edit_comment.html"
+                                  title='fn oration::rocket_route_fn_edit_comment'>rocket_route_fn_edit_comment</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_get_comment_count.html"
+                                  title='fn oration::rocket_route_fn_get_comment_count'>rocket_route_fn_get_comment_count</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_get_comments.html"
+                                  title='fn oration::rocket_route_fn_get_comments'>rocket_route_fn_get_comments</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_get_session.html"
+                                  title='fn oration::rocket_route_fn_get_session'>rocket_route_fn_get_session</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_index.html"
+                                  title='fn oration::rocket_route_fn_index'>rocket_route_fn_index</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_initialise.html"
+                                  title='fn oration::rocket_route_fn_initialise'>rocket_route_fn_initialise</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_like_comment.html"
+                                  title='fn oration::rocket_route_fn_like_comment'>rocket_route_fn_like_comment</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rocket_route_fn_new_comment.html"
+                                  title='fn oration::rocket_route_fn_new_comment'>rocket_route_fn_new_comment</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "oration";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
